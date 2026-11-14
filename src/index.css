@@ -1,0 +1,180 @@
+
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #20242d;
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(67, 127, 247, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(35, 90, 180, 0.25),
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #b8e9ff,
+      #6aaafa,
+      #2b6df0bc
+    );
+
+  background-size: 160% 160%;
+  animation: background-drift 18s ease-in-out infinite alternate;
+}
+
+
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.22),
+    rgba(80, 130, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.02)
+  );
+
+  box-shadow:
+    inset -5px -5px 15px rgba(80, 130, 255, 0.10),
+    0 0 20px rgba(100, 150, 255, 0.08);
+
+  animation: bubble-float 12s ease-in-out infinite;
+
+  /* Smooth mouse interaction */
+  transition: translate 0.25s ease-out;
+}
+
+
+/* Individual bubble positions */
+
+.bubble-one {
+  width: 100px;
+  height: 100px;
+  left: 8%;
+  top: 15%;
+  animation-duration: 14s;
+}
+
+.bubble-two {
+  width: 45px;
+  height: 45px;
+  left: 25%;
+  top: 65%;
+  animation-duration: 10s;
+  animation-delay: -3s;
+}
+
+.bubble-three {
+  width: 150px;
+  height: 150px;
+  right: 15%;
+  top: 12%;
+  animation-duration: 17s;
+  animation-delay: -5s;
+}
+
+.bubble-four {
+  width: 65px;
+  height: 65px;
+  right: 35%;
+  bottom: 12%;
+  animation-duration: 11s;
+  animation-delay: -2s;
+}
+
+.bubble-five {
+  width: 35px;
+  height: 35px;
+  right: 8%;
+  top: 55%;
+  animation-duration: 9s;
+  animation-delay: -4s;
+}
+
+.bubble-six {
+  width: 80px;
+  height: 80px;
+  left: 45%;
+  top: 10%;
+  animation-duration: 15s;
+  animation-delay: -7s;
+}
+
+.bubble-seven {
+  width: 55px;
+  height: 55px;
+  left: 12%;
+  bottom: 8%;
+  animation-duration: 13s;
+  animation-delay: -6s;
+}
+
+@keyframes bubble-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate3d(15px, -25px, 0) scale(1.05);
+  }
+
+  50% {
+    transform: translate3d(-10px, -45px, 0) scale(0.95);
+  }
+
+  75% {
+    transform: translate3d(-20px, -15px, 0) scale(1.02);
+  }
+}
+
+@keyframes background-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Accessibility: respect reduced motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-background,
+  .bubble {
+    animation: none !important;
+  }
+
+  .bubble {
+    transition: none;
+  }
+}
