@@ -11,7 +11,7 @@ function CostCalculator() {
     weight.trim() !== '' &&
     Number.isFinite(pounds) &&
     pounds > 0 &&
-    pounds <= 200
+    pounds <= 50
 
   const total = isValid ? pounds * 2 : 0
 
@@ -82,7 +82,7 @@ function CostCalculator() {
 
             {weight !== '' && !isValid && (
               <p className="mt-2 text-sm text-red-300">
-                Please enter a weight between 0 and 200 lbs.
+                Please enter a weight that is 0-50 pounds.
               </p>
             )}
           </div>
